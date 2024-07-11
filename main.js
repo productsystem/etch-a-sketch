@@ -1,11 +1,24 @@
 let color = "black";
-
-
-
+let click = false;
 
 document.addEventListener("DOMContentLoaded", function()
 {
     createEtch(16);
+    document.querySelector("body").addEventListener("click", function(e){
+        if(e.target.tagName != "BUTTON")
+        {
+            click = !click;
+            let draw = document.querySelector("#draw");
+            if(click)
+            {
+                draw.textContent = "Draw Now by hovering over pixels. Click once to stop drawing";
+            }
+            else
+            {
+                draw.textContent = "Click once anywhere to start drawing";
+            }
+        }
+    })
     let btn_popup = document.querySelector("#popup");
     btn_popup.addEventListener("click", function()
     {
@@ -27,6 +40,7 @@ function createEtch(size)
     {
         let div = document.createElement("div");
         etch.insertAdjacentElement("beforeend", div);
+        div.style.border = "1px solid black";
         div.addEventListener("mouseover",colorIn);
     }
 }
@@ -41,7 +55,8 @@ function getSize()
     }
     else if(input > 0 && input < 100)
     {
-        message.innerHTML = "Correct";
+        message.innerHTML = "Board Changed";
+        resetEtch();
         return input;
     }
     else
@@ -52,12 +67,14 @@ function getSize()
 }
 
 function colorIn(){
-    if(color == "random")
-    {
-        this.style.backgroundColor = 'hsla(' + (Math.random() * 360) + ', 100%, 50%, 1)';
-    }
-    else{
-        this.style.backgroundColor = "black";
+    if(click){
+        if(color == "random")
+        {
+            this.style.backgroundColor = 'hsla(' + (Math.random() * 360) + ', 100%, 50%, 1)';
+        }
+        else{
+            this.style.backgroundColor = "black";
+        }
     }
 }
 
