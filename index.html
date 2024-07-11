@@ -15,13 +15,14 @@
         <h6>Select size</h6>
         <button id = "popup" class="btn btn-success">Select</button>
     </div>
+    <p id="message"></p>
     <div class="etch">
 
     </div>
     <div class="footer">
-        <button class="btn btn-dark">Black</button>
-        <button class="btn btn-warning">Rainbow</button>
-        <button class="btn btn-secondary">Reset</button>
+        <button class="btn btn-dark" onclick="setColor('black')">Black</button>
+        <button class="btn btn-warning" onclick="setColor('random')">Rainbow</button>
+        <button class="btn btn-secondary" onclick="resetEtch()">Reset</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
